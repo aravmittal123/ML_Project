@@ -13,6 +13,8 @@ from sklearn.preprocessing import OneHotEncoder
 from sklearn.pipeline import Pipeline
 from sklearn.impute import SimpleImputer
 
+from src.components.model_trainer import ModelTrainerConfig
+from src.components.model_trainer import ModelTrainer
 
 # Create Config Class
 @dataclass
@@ -102,6 +104,7 @@ class DataTransformation:
             input_feature_train_arr=preprocessing_obj.fit_transform(input_feature_train_df)
             input_feature_test_arr=preprocessing_obj.transform(input_feature_test_df)
             
+            #  np.c_ = i.e concetenation of column of two differenct arrays
             train_arr = np.c_[
                 input_feature_train_arr, np.array(target_feature_train_df)
             ]
